@@ -67,6 +67,9 @@ def get_gcode_from_height(gcode_file, start_height):
     except Exception as e:
         print(f"An error occurred while processing the G-code file: {e}")
 
+def wait_for_exit():
+    print("Press any key to exit...")
+    os.system("pause")  # Fonctionne sur Windows
 
 def main():
     # Use the current working directory
@@ -90,7 +93,8 @@ def main():
 
     #4 generates new gcode starting at height where print was interupted
     get_gcode_from_height(selected_file_path, height)
-    pass
+    
 
 if __name__ == "__main__":
     main()
+    wait_for_exit()
