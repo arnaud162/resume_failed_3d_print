@@ -34,6 +34,15 @@ def get_gcode_from_height(gcode_file, start_height):
 
         final_height = 0
         with open(gcode_file, 'r') as file:
+            #keeping header of gcode file
+            for line in file:
+                # Vérifier si la ligne contient l'instruction G0
+                if "G0" in line:
+                    break
+                # Écrire la ligne dans le fichier de sortie
+                filtered_lines.append(line.strip())
+
+
             for line in file:
                 # Vérifier si la ligne contient un mouvement en Z
                 if 'Z' in line and 'G0' in line :
